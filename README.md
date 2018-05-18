@@ -5,4 +5,3 @@ This repository will contain all source code, data, visualizations for my 597A&B
 
 The project will use Event Registry to gather articles about Bitcoin, and then perform a lexical sentiment analysis on them to test for correlation and feedback between news sentiment and Bitcoin prices.
 
-<b>kdjfsldk
