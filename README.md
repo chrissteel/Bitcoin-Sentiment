@@ -29,5 +29,6 @@ q = QueryArticlesIter(
 
 for art in q.execQuery(er, sortBy = "date"):
     print(art)
-    #this will need to be altered so that it also stores these articles for somewhere, but in the initial test run, I just had it print them.
+    #this will need to be altered so that it also stores these articles for somewhere
+    #but in the initial test run, I just had it print them.
 ```
