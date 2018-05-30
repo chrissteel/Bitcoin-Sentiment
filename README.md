@@ -31,7 +31,7 @@ q = QueryArticlesIter(
 
 ## Organization of Relevant Data
 
-This takes the data collected from the API call above and extracts only the relevant information that will be used in this analysis: 
+This takes the data collected from the API call above and extracts only the relevant information that will be used in this analysis and saves it to a .csv file:
 
 * a unique identifier `art['uri']`
 * the date `art['date']` and time `art['time']` of each article's publication
@@ -54,5 +54,6 @@ for art in q.execQuery(er, sortBy = "date", maxItems = 2):
         i = i+1 
         print(adf)
 
+#Saves the data to a .csv file:
 adf.to_csv('BTCArticles.csv')
 ```
