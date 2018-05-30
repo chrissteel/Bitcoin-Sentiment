@@ -6,9 +6,9 @@ This repository will contain all source code, data, visualizations for my 597A&B
 The project will use the Event Registry API to gather articles about Bitcoin, and then perform a lexical sentiment analysis on them to test for correlation and feedback between news sentiment and Bitcoin prices.
 
 
-## API Call
+## API Call (Initial Query)
 
-This API call searches for and returns all articles in EventRegistry's database that fit the criteria set by `QueryArticlesIter`.
+This gathers data from all of the articles in EventRegistry's database that fit the criteria set by `QueryArticlesIter`.
 
 
 ```python
