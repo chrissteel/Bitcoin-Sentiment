@@ -33,7 +33,13 @@ q = QueryArticlesIter(
 
 ## Organization of Relevant Data
 
-This takes the data collected from the API call above and extracts only the relevant information that will be used in this analysis: a unique identifier (useful for time series analysis) for each article, the date/time of publication, the title, the body, and the domain name of the source.
+This takes the data collected from the API call above and extracts only the relevant information that will be used in this analysis: 
+
+* a unique identifier `art['uri']`
+* the date `art['date']` and time `art['time']` of each article's publication
+* the article's title `art['title']`
+* the article's body/text `art['body']`
+* the source of the article `art['source']['uri']`
 
 ```python
 #initializing dictionary for relevant article data
