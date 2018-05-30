@@ -5,7 +5,9 @@ This repository will contain all source code, data, visualizations for my 597A&B
 
 The project will use the Event Registry API to gather articles about Bitcoin, and then perform a lexical sentiment analysis on them to test for correlation and feedback between news sentiment and Bitcoin prices.
 
-## API Call (Initial Query)
+## Gathering Data
+
+### API Call
 
 This gathers data from all of the articles in EventRegistry's database that fit the criteria set by `QueryArticlesIter`.
 
@@ -29,9 +31,9 @@ q = QueryArticlesIter(
     lang = "eng",)
 ```
 
-## Organization of Relevant Data
+### Organization of Relevant Data
 
-This takes the data collected from the API call above and extracts only the relevant information that will be used in this analysis and saves it to a .csv file:
+This takes the data collected from the API call above and extracts only the relevant information that will be used in this analysis, then saves it to a .csv file:
 
 * a unique identifier `art['uri']`
 * the date `art['date']` and time `art['time']` of each article's publication
@@ -57,3 +59,20 @@ for art in q.execQuery(er, sortBy = "date", maxItems = 2):
 #Saves the data to a .csv file:
 adf.to_csv('BTCArticles.csv')
 ```
+### Bitcoin Prices
+
+The Bitcoin market data is simply downloaded from [Coinbase.com].
+
+
+## Sentiment Analysis
+
+*Coming Soon*
+
+
+## Market Analysis
+
+*Coming Soon*
+
+
+
+
