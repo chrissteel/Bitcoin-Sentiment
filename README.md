@@ -66,8 +66,32 @@ The Bitcoin market data is simply downloaded from [Coinbase.com].
 
 ## Sentiment Analysis
 
-*Coming Soon*
+*In Progress*
+```python
 
+import nltk
+import pandas as pd
+
+pd.read_csv('BTCArticles.csv')
+
+###stop words
+
+
+###lemmatization
+
+
+###sentiment scores by article
+
+
+
+###sentiment scores by date
+
+
+
+
+###write new sentiment scores to csv
+df.to_csv('BTCArticles_Sentiment.csv')
+```
 
 ## Market Analysis
 
