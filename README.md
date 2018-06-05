@@ -95,12 +95,13 @@ btca_df.to_csv('BTCArticles_Sentiment.csv')
 
 ## Market Analysis
 
+```python
 import pandas as pd
 import numpy as np
 
 sdf = pd.read_csv('BTCArticles_Sentiment.csv')
 mdf = pd.read_csv('BTC_Daily_Prices.csv')
-
+```
 
 
 
