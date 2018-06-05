@@ -72,7 +72,7 @@ The Bitcoin market data is simply downloaded from [Coinbase.com].
 import nltk
 import pandas as pd
 
-pd.read_csv('BTCArticles.csv')
+bta_df = pd.read_csv('BTCArticles.csv')
 
 ###stop words
 
@@ -90,12 +90,16 @@ pd.read_csv('BTCArticles.csv')
 
 
 ###write new sentiment scores to csv
-df.to_csv('BTCArticles_Sentiment.csv')
+btca_df.to_csv('BTCArticles_Sentiment.csv')
 ```
 
 ## Market Analysis
 
-*Coming Soon*
+import pandas as pd
+import numpy as np
+
+sdf = pd.read_csv('BTCArticles_Sentiment.csv')
+mdf = pd.read_csv('BTC_Daily_Prices.csv')
 
 
 
