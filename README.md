@@ -20,13 +20,12 @@ from eventregistry import *
 #Getting authorization from Event Registry with API key
 er = EventRegistry(apiKey = "API-KEY")
 
-#Loading data from event registry
-#These specifications might need to be reconsidered 
+#Querying data from event registry
 q = QueryArticlesIter(
     keywords = "bitcoin",
-    categoryUri = er.getCategoryUri("business"),
-    dateStart = "2018-05-20",
-    dateEnd = "2018-05-21",
+    dateStart = "2014-01-01",
+    dateEnd = "2018-07-05",
+    dataType = "news",
     keywordsLoc = "title",
     lang = "eng",)
 ```
@@ -50,8 +49,8 @@ adf = pd.DataFrame(data,
 
 #Sorting the data from the query into rows and columns for easy analysis and export to a csv file
 i = 0
-for art in q.execQuery(er, sortBy = "date", maxItems = 2):
-    if i <= 5:
+for art in q.execQuery(er, sortBy = "date", maxItems = 200000):
+    if i <= 200000:
         adf.loc[i]= art['uri'], art['date'], art['time'], art ['dateTime'], art['title'], art['body'], art['source']['uri']
         i = i+1 
         print(adf)
