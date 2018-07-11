@@ -101,7 +101,7 @@ h4_scores.rename(columns={'Negative': 'H4Neg', 'Polarity': 'H4Pol', 'Positive':'
 ##Merging DataFrames into one for Analysis 
 all_data = pd.concat([adf, lm_scores, h4_scores], axis=1)
 
-all_data.to_csv('BTCArticle_AllData.csv')
+all_data.to_csv('BTC_LM_H4_Scores.csv')
 
 ```
 ### Bitcoin Prices
@@ -111,7 +111,12 @@ The Bitcoin market data is simply downloaded from [Coinbase.com].
 
 ## Market Analysis
 
+The analysis was conducted using Stata
+
 *in progress*
 
-
+```stata
+import delimited /BTC_LM_H4_Scores.csv, bindquote(strict) varnames(1)
+collapse (mean) lmneg (mean) lmpos (mean) h4neg (mean) h4pos, by(date)
+```
 
