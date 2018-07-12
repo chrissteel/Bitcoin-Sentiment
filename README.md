@@ -117,6 +117,9 @@ The analysis was conducted using Stata
 
 ```stata
 import delimited /BTC_LM_H4_Scores.csv, bindquote(strict) varnames(1)
-collapse (mean) lmneg (mean) lmpos (mean) h4neg (mean) h4pos, by(date)
+drop time-source lmpol lmsub h4pol h4sub
+generate lm = lmpos - lmneg
+generate h4 = h4pos - h4neg
+collapse (mean) lm (mean) h4, by(date)
 ```
 
