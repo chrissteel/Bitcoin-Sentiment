@@ -111,9 +111,9 @@ The Bitcoin market data is simply downloaded from [Coinbase.com].
 
 ## Market Analysis
 
-The analysis was conducted using Stata
+The analysis was conducted using Stata.
 
-*in progress*
+First, the LM and H4 scores were imported, and total scores for each day were calculated.
 
 ```stata
 import delimited /BTC_LM_H4_Scores.csv, bindquote(strict) varnames(1)
@@ -123,3 +123,9 @@ generate h4 = h4pos - h4neg
 collapse (mean) lm (mean) h4, by(date)
 ```
 
+Next, a data set containing BTC prices was merged with the data set containing scores by date, and the daily changes in price from the previous day were calculated. 
+
+```stata
+merge 1:1 date using "/Users/admin/Desktop/Bitcoin/Scores/BTCPrices.dta"
+generate dprice = price[_n] - price[_n - 1]
+```
