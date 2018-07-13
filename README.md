@@ -116,13 +116,13 @@ The Bitcoin market data is simply downloaded from [Coinbase.com].
 The analysis was conducted using Stata.
 
 First, the LM and H4 scores were imported, and total scores of the following variables for each article were calculated:
-`lmpos`: positive LM scores
-`lmneg`: negative LM scores
-`lm`: total LM scores for each article `lmpos - lmneg`
+* `lmpos`: positive LM scores
+* `lmneg`: negative LM scores
+* `lm`: total LM scores for each article `lmpos - lmneg`
 
-`h4pos`: positive H4 scores
-`h4neg`: negative H4 scores
-`h4`: total H4scores for each article `h4pos - h4neg`
+* `h4pos`: positive H4 scores
+* `h4neg`: negative H4 scores
+* `h4`: total H4scores for each article `h4pos - h4neg`
 
 ```stata
 import delimited /BTC_LM_H4_Scores.csv, bindquote(strict) varnames(1)
