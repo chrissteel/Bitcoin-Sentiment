@@ -22,6 +22,8 @@ from pysentiment.lm import LM
 er = EventRegistry(apiKey = "API-KEY")
 
 #Querying data from event registry
+#I was able to get more articles by doing multiple queries with shorter dateStart and dateEnd windows
+
 q = QueryArticlesIter(
     keywords = "bitcoin",
     dateStart = "2014-01-01",
@@ -113,17 +115,28 @@ The Bitcoin market data is simply downloaded from [Coinbase.com].
 
 The analysis was conducted using Stata.
 
-First, the LM and H4 scores were imported, and total scores for each day were calculated.
+First, the LM and H4 scores were imported, and total scores of the following variables for each article were calculated:
+`lmpos`: positive LM scores
+`lmneg`: negative LM scores
+`lm`: total LM scores for each article `lmpos - lmneg`
+
+`h4pos`: positive H4 scores
+`h4neg`: negative H4 scores
+`h4`: total H4scores for each article `h4pos - h4neg`
 
 ```stata
 import delimited /BTC_LM_H4_Scores.csv, bindquote(strict) varnames(1)
 drop time-source lmpol lmsub h4pol h4sub
 generate lm = lmpos - lmneg
 generate h4 = h4pos - h4neg
-collapse (mean) lm (mean) h4, by(date)
+```
+Next, the averages for each day were calculated:
+
+```stata
+collapse (mean)lmpos (mean)lmneg (mean) h4pos (mean) h4neg (mean) lm (mean) h4, by(date)
 ```
 
-Next, a data set containing BTC prices was merged with the data set containing scores by date, and the daily changes in price from the previous day were calculated. 
+A data set containing BTC prices was then merged with the data set containing scores by date, and the daily changes in price from the previous day were calculated. 
 
 ```stata
 merge 1:1 date using "/Users/admin/Desktop/Bitcoin/Scores/BTCPrices.dta"
