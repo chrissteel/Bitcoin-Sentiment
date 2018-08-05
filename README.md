@@ -111,7 +111,7 @@ all_data.to_csv('BTC_LM_H4_Scores.csv')
 The Bitcoin market data is simply downloaded from [Coinbase.com].
 
 
-## Market Analysis
+## Sentiment Data
 
 The analysis was conducted using Stata.
 
@@ -136,9 +136,27 @@ Next, the averages for each day were calculated:
 collapse (mean)lmpos (mean)lmneg (mean) h4pos (mean) h4neg (mean) lm (mean) h4, by(date)
 ```
 
-A data set containing BTC prices was then merged with the data set containing scores by date, and the daily changes in price from the previous day were calculated. 
+## Market Analysis
+
+A data set containing BTC prices was then merged with the data set containing scores by date, and the daily percent changes in price from the previous day (index return) were calculated using a logarithmic transformation. 
 
 ```stata
 merge 1:1 date using "/Users/admin/Desktop/Bitcoin/Scores/BTCPrices.dta"
-generate dprice = price[_n] - price[_n - 1]
+generate btc_return = ln(price[_n]/price[_n - 1])
 ```
+
+A linear regression was used to determine relationships between the sentiment data and price data.  The one that turned out to be the most useful was between LM polarity scores and the index returns.
+
+```stata
+regress btc_return lmpol if endate >= 20089
+```
+
+The regression was then tested across multiple time lags, first the effect of returns from 3-1 days ago on LM polarity scores.
+
+```stata
+regress btc_return_1dago lmpol if endate >= 20089
+regress btc_return_2dago lmpol if endate >= 20089
+regress btc_return_3dago lmpol if endate >= 20089
+```
+
+##
