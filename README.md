@@ -154,9 +154,18 @@ regress btc_return lmpol if endate >= 20089
 The regression was then tested across multiple time lags, first the effect of returns from 3-1 days ago on LM polarity scores.
 
 ```stata
-regress btc_return_1dago lmpol if endate >= 20089
-regress btc_return_2dago lmpol if endate >= 20089
-regress btc_return_3dago lmpol if endate >= 20089
+regress lmpol btc_return_1dago if endate >= 20089
+regress lmpol btc_return_2dago if endate >= 20089
+regress lmpol btc_return_3dago if endate >= 20089
 ```
 
-##
+Next was the effect of LM polarity scores on returns 1-3 days later.
+
+```stata
+regress btc_return_1dafter lmpol if endate >= 20089
+regress btc_return_2dafter lmpol if endate >= 20089
+regress btc_return_3dafter lmpol if endate >= 20089
+```
+
+The output of these results showed that the markets were predictive of news sentiment, but not the other way around when time lags were taken into account. The next tests performed further explored these results.
+
