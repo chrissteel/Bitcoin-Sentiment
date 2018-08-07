@@ -167,5 +167,24 @@ regress btc_return_2dafter lmpol if endate >= 20089
 regress btc_return_3dafter lmpol if endate >= 20089
 ```
 
-The output of these results showed that the markets were predictive of news sentiment, but not the other way around when time lags were taken into account. The next tests performed further explored these results.
+The output of these results showed that the markets were predictive of news sentiment, but not the other way around when time lags were taken into account. 
+
+## Vector Autoregression (VAR) 
+
+First a Dickey-Fuller test was applied to test for stationarity of each variable (three versions of the test used as a robustness check):
+
+```stata
+dfuller lmpol, drift
+dfuller lmpol, trend
+dfuller lmpol, noconstant
+
+dfuller btc_return, drift
+dfuller btc_return, trend
+dfuller btc_return, noconstant
+```
+Both variables were stationary according to all three versions of the test, so the VAR was conducted next.
+
+```stata
+varbasic lmpol btc_return if endate >= 20089, lags(1/3)
+```
 
