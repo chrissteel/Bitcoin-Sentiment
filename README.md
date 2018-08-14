@@ -178,9 +178,23 @@ dfuller btc_return, drift
 dfuller btc_return, trend
 dfuller btc_return, noconstant
 ```
-Both variables were stationary according to all three versions of the test, so the VAR was conducted next.
+Both variables were stationary according to all three versions of the test, so the VAR was conducted next, based on preestimation tests.
 
 ```stata
+varsoc lmpol btc_return if endate >= 20089, maxlag(10)
 var lmpol btc_return if endate >= 20089, lags(1/3)
 ```
+Granger causality tests across 1-3 lags were conducted to see how lagged LM polarity scores and BTC Returns affected LM polarity scores.
 
+```stata
+test L1.lmpol=L2.lmpol=L3.lmpol=0
+test L1.lmpol = 0
+test L2.lmpol = 0
+test L3.lmpol = 0
+
+test L1.btc_return = 0
+test L2.btc_return = 0
+test L3.btc_return = 0
+
+test L1.btc_return=L2.btc_return=L3.btc_return=0
+```
