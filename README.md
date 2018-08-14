@@ -181,6 +181,6 @@ dfuller btc_return, noconstant
 Both variables were stationary according to all three versions of the test, so the VAR was conducted next.
 
 ```stata
-varbasic lmpol btc_return if endate >= 20089, lags(1/3)
+var lmpol btc_return if endate >= 20089, lags(1/3)
 ```
 
