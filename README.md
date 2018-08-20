@@ -18,19 +18,21 @@ from eventregistry import *
 from pysentiment.hiv4 import HIV4
 from pysentiment.lm import LM
 
-#Getting authorization from Event Registry with API key
-er = EventRegistry(apiKey = "API-KEY")
-
 #Querying data from event registry
 #I was able to get more articles by doing multiple queries with shorter dateStart and dateEnd windows
+er = EventRegistry(apiKey = "API-KEY")
+
+#Loading data from event registry
 
 q = QueryArticlesIter(
     keywords = "bitcoin",
     dateStart = "2014-01-01",
-    dateEnd = "2018-07-05",
+    dateEnd = "2018-07-10",
     dataType = "news",
+    isDuplicateFilter = "skipDuplicates",
     keywordsLoc = "title",
-    lang = "eng",)
+    lang = "eng",
+    ignoreLang = "deu",)
 ```
 
 ### Organization of Relevant Data
