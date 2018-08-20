@@ -58,7 +58,8 @@ for art in q.execQuery(er, sortBy = "date", maxItems = 200000):
     if i <= 200000:
         adf.loc[i]= art['uri'], art['date'], art['time'], art ['dateTime'], art['title'], art['body'], art['source']['uri']
         i = i+1 
-
+        
+adf.dropna() 
 ```
 
 
