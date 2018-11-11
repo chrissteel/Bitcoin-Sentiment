@@ -1,4 +1,3 @@
-# Practicum
 This project is undergoing constant revision, but below are a few preliminary tests:
 
 ## Gathering Data
